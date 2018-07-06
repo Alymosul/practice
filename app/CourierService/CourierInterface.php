@@ -2,23 +2,19 @@
 
 namespace App\CourierService;
 
-use App\Product;
-
 interface CourierInterface
 {
     /**
-     * Gets the shipment fees for the current courier.
-     *
-     * @return float
-     */
-    public function getShipmentFees(): float;
-
-    /**
-     * Delivers the product to the customer.
-     *
-     * @param Product $product
+     * Creates the shipment.
      *
      * @return mixed
      */
-    public function deliver(Product $product);
+    public function createShipment();
+
+    /**
+     * Tracks the shipment.
+     *
+     * @return mixed
+     */
+    public function trackShipment();
 }

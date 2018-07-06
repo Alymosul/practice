@@ -2,12 +2,16 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$item = new \App\Product('Book', 20.00);
+$client = new \App\Client(new \App\CourierService\CourierOneAdapter(new \App\CourierService\CourierOne\CourierOne));
 
-$ac = new \App\Acquisition(
-    new \App\CourierService\ExpressCourierAdapter(
-        new \App\CourierService\Express\ExpressQ
-    )
-);
+$client->createShipment();
 
-$ac->checkout($item);
+$client->trackShipment();
+
+echo "\r\n";
+
+$client2 = new \App\Client(new \App\CourierService\CourierTwoAdapter(new \App\CourierService\CourierTwo\CourierTwo));
+
+$client2->createShipment();
+
+$client2->trackShipment();
